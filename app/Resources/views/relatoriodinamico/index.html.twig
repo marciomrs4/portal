@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Lista de Relatorios Dinamicos</h3>
+                </div>
+
+                <div class="panel-body">
+
+
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped table-hover table-bordered order=[] myTable">
+                            <thead>
+                            <tr>
+                                <th>Ações</th>
+                                <th>Nome</th>
+                                <th>Grupo</th>
+                                <th>Permissao</th>
+                                <th>Codigo</th>
+                                <th>Interno</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for relatorioDinamico in relatorioDinamicos %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('relatoriodinamico_show', { 'id': relatorioDinamico.id }) }}"
+                                        class="btn btn-primary btn-xs">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </a>
+                                    </td>
+                                    <td>{{ relatorioDinamico.nome }}</td>
+                                    <td>{{ relatorioDinamico.grupo }}</td>
+                                    <td>{{ relatorioDinamico.permissao }}</td>
+                                    <td>{{ relatorioDinamico.codigo }}</td>
+                                    <td>{% if relatorioDinamico.interno %}SIM{% else %}NÃO{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('portal_homepage') }}" class="btn btn-primary">
+                Principal
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}

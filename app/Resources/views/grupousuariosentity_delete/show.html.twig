@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Grupousuariosentity</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ grupoUsuariosEntity.id }}</td>
+            </tr>
+            <tr>
+                <th>Isativo</th>
+                <td>{% if grupoUsuariosEntity.isativo %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ grupoUsuariosEntity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Restricted</th>
+                <td>{% if grupoUsuariosEntity.restricted %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('grupousuario_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

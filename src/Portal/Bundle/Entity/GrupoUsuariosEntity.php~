@@ -1,0 +1,47 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: marcio
+ * Date: 29/03/17
+ * Time: 10:01
+ */
+
+namespace Portal\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="user_grupousuario")
+ */
+class GrupoUsuariosEntity
+{
+
+    /**
+     * @ORM\Column(type="bigint")
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $discriminador;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isativo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $nome;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $restricted;
+
+}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Grupousuariosentities list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Isativo</th>
+                <th>Nome</th>
+                <th>Restricted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for grupoUsuariosEntity in grupoUsuariosEntities %}
+            <tr>
+                <td><a href="{{ path('grupousuario_show', { 'id': grupoUsuariosEntity.id }) }}">{{ grupoUsuariosEntity.id }}</a></td>
+                <td>{% if grupoUsuariosEntity.isativo %}Yes{% else %}No{% endif %}</td>
+                <td>{{ grupoUsuariosEntity.nome }}</td>
+                <td>{% if grupoUsuariosEntity.restricted %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('grupousuario_show', { 'id': grupoUsuariosEntity.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

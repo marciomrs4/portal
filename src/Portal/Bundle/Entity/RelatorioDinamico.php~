@@ -1,0 +1,82 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: marcio
+ * Date: 29/03/17
+ * Time: 10:01
+ */
+
+namespace Portal\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ * @ORM\Table(name="dynr_relatoriodinamico")
+ */
+class RelatorioDinamico
+{
+
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="bigint")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $nome;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $grupo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $script;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $jrxml;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $permissao;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $codigo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $interno;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $modulo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $applicationid;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $versao;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $travaratualizacao;
+
+}

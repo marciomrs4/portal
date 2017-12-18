@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Relatorio</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover table-striped table-condensed">
+                            <tbody>
+                            <tr>
+                                <th>Nome</th>
+                                <td>{{ cadastroRelatorio.nome }}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Role</th>
+                                <td>{{ cadastroRelatorio.role }}</td>
+                            </tr>
+                            <tr>
+                                <th>Grupo</th>
+                                <td>{{ cadastroRelatorio.grupo }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ render(controller('PortalBundle:Permissoes:show',{ 'id': permissao.0.id })) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            &nbsp;
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('cadastrorelatorio_index') }}" class="btn btn-primary">
+                Listar Cadastro de Relatorios
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

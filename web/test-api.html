@@ -1,0 +1,66 @@
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+
+<button class="cliqueaqui">
+    Fazer Requisição
+</button>
+
+<table class="maisinformacoes" border="2">
+    <thead>
+        <th>Cliente</th>
+        <th>Estabelecimento</th>
+        <th>Domingo</th>
+        <th>Segunda</th>
+        <th>Terça</th>
+        <th>Quarta</th>
+        <th>Quinta</th>
+        <th>Sexta</th>
+        <th>Sábado</th>
+    </thead>
+</table>
+
+<a href="http://localhost:8070/app_dev.php/horarios/json" id="link"></a>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+
+        var urlMaisInformacao = $("#link").attr('href');
+
+
+        $(".cliqueaqui").click(function (e) {
+
+            e.preventDefault();
+
+            $.getJSON(urlMaisInformacao)
+                    .done(function(data){
+                        $.each(data, function(key, val){
+                            $(".maisinformacoes").append(`<tr><td>${val.Cliente}</td><td>${val.Estabelecimento}</td><td>${val.Domingo}</td><td>${val.Quarta}</td><td>${val.Quinta}</td><td>${val.Sabado}</td><td>${val.Segunda}</td><td>${val.Sexta}</td><td>${val.Terca}</td></tr>`)
+                        })
+
+                        teste = data;
+                        console.table(teste);})
+                    .fail(function(){
+                        alert("deu merda");
+                    });
+
+
+        });
+
+
+    });
+
+
+</script>
+
+</body>
+
+
+</html>

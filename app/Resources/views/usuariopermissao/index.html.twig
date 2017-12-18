@@ -1,0 +1,35 @@
+{{ dump(usuarioPermissaos) }}
+
+
+{#
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Usuariopermissaos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuarioPermissao in usuarioPermissaos %}
+            <tr>
+                <td><a href="{{ path('usuariopermissao_show', { 'id': usuarioPermissao.id }) }}">{{ usuarioPermissao.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('usuariopermissao_show', { 'id': usuarioPermissao.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
+#}

@@ -1,0 +1,54 @@
+{% extends'::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="header clearfix">
+                <h3 class="text-muted">Permissões do Portal</h3>
+            </div>
+
+            <div class="jumbotron">
+                <p class="lead">
+
+                </p>
+                <p>
+                    <a class="btn btn-lg btn-primary" href="{{ path('grupousuarios_index') }}" role="button">
+                        Listar Grupos
+                    </a>
+                </p>
+
+                <p>
+                    <a class="btn btn-lg btn-primary" href="{{ path('usuario_index') }}" role="button">
+                        Listar Usuários
+                    </a>
+                </p>
+
+                <p>
+                    <a class="btn btn-lg btn-primary" href="{{ path('permissoes_index') }}" role="button">
+                        Listar Permissões
+                    </a>
+                </p>
+
+                <p>
+                    <a class="btn btn-lg btn-primary" href="{{ path('relatoriodinamico_index') }}" role="button">
+                        Listar Relatorios Dinamicos
+                    </a>
+                </p>
+
+                <p>
+                    <a class="btn btn-lg btn-primary" href="{{ path('cadastrorelatorio_index') }}" role="button">
+                        Listar Cadastro de Relatorios
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>CEADIS TECNOLOGIA</p>
+    </footer>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Grupo de Usuário</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h3>{{ grupoUsuario.nome }}</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {{ render(controller('PortalBundle:PermissoesGrupo:index',{ 'grupo' : grupoUsuario.id })) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Grupo(s) pai</h3>
+                </div>
+                <div class="panel-body">
+
+                    {% for grupo in subgrupos %}
+                        <a href="{{ path('grupousuarios_show', {'id': grupo.grupoprincipalid }) }}">Analisar este Grupo</a>
+                        {{ render(controller('PortalBundle:PermissoesGrupo:index',{ 'grupo' : grupo.grupoprincipalid })) }}
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Usuários neste Grupo</h3>
+                </div>
+
+                <div class="panel-body">
+
+
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped table-hover table-bordered myTable">
+                            <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Ativo ?</th>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Login</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for usuario in usuarios %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('usuario_show', { 'id': usuario.id }) }}"
+                                           class="btn btn-primary btn-xs">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </a>
+                                    </td>
+                                    <td>{% if usuario.isativo %}SIM{% else %}NÃO{% endif %}</td>
+                                    <td>{{ usuario.nome }}</td>
+                                    <td>{{ usuario.email }}</td>
+                                    <td>{{ usuario.login }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('grupousuarios_index') }}" class="btn btn-primary btn-xs">
+                Listar todos os grupos
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

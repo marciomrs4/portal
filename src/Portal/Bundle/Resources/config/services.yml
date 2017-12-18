@@ -1,0 +1,28 @@
+services:
+#    portal.example:
+#        class: Portal\Bundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+     portal.horarios:
+         class: Portal\Bundle\Repository\HorarioRepository
+         arguments: ['@service_container']
+
+     portal.clientes:
+         class: Portal\Bundle\Repository\ClienteRepository
+         arguments: ['@service_container']
+
+     portal.quota:
+         class: Portal\Bundle\Repository\QuotaRepository
+         arguments: ['@service_container']
+     portal.usuario_permissao:
+         class: Portal\Bundle\Repository\UsuarioPermissaoRepository
+         arguments: ['@service_container']
+     portal.grupo_usuario:
+         class: Portal\Bundle\Repository\UsuarioGrupoUsuarioRepository
+         arguments: ['@service_container']
+     portal.permissoes_grupo:
+         class: Portal\Bundle\Repository\PermissaoGrupoRepository
+         arguments: ['@service_container']
+     portal.sub_grupo:
+         class: Portal\Bundle\Repository\SubGrupo
+         arguments: ['@service_container']

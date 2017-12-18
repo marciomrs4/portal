@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">Permissões Unificadas do Usuário.</h3>
+                <h5 class="panel-title">Mostra de forma unificada todas as permissoes do usuários e seus grupos.</h5>
+            </div>
+
+            <div class="panel-body">
+
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-condensed unique">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descricao</th>
+                            <th>Ajuda</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for obj in permissoesListaFinal %}
+                            {% for permisso in obj %}
+                                <tr>
+                                    <td><a href="{{ path('permissoes_show', { 'id': permisso.id }) }}">{{ permisso.nome }}</a></td>
+                                    <td>{{ permisso.descricao }}</td>
+                                    <td>{{ permisso.ajuda }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+        <script src="{{ asset('bundles/portal/js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('bundles/portal/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/portal/js/jquery.dataTables.min.js') }}"></script>
+
+        <script>
+            $('.unique').dataTable({
+                paging: false
+            });
+        </script>
+{% endblock %}

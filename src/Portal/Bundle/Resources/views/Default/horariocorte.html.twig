@@ -1,0 +1,36 @@
+{% extends ':default:index.html.twig' %}
+
+{% block body %}
+
+<table border="2">
+    <thead>
+    <tr>
+        <td>Cliente</td>
+        <td>Estabelecimento</td>
+        <td>Domingo</td>
+        <td>Segunda</td>
+        <td>Terca</td>
+        <td>Quarta</td>
+        <td>Quinta</td>
+        <td>Sexta</td>
+        <td>Sabado</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for horario in horarios %}
+        <tr>
+            <td>{{ horario.Cliente }}</td>
+            <td>{{ horario.Estabelecimento }}</td>
+            <td>{{ horario.Domingo }}</td>
+            <td>{{ horario.Segunda }}</td>
+            <td>{{ horario.Terca }}</td>
+            <td>{{ horario.Quarta }}</td>
+            <td>{{ horario.Quinta }}</td>
+            <td>{{ horario.Sexta }}</td>
+            <td>{{ horario.Sabado }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

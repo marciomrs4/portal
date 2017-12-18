@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PortalBundle:Cliente:listParameters{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Cliente:listParameters page</h1>
+
+    <table border="2">
+        <thead>
+        <tr>
+            <td>Linha(s)</td>
+            <td>Cliente</td>
+            <td>Nome Completo</td>
+            <td>Periodicidade</td>
+            <td>Periodos</td>
+            <td>Ignora Consumo</td>
+            <td>MINIMO DIAS</td>
+            <td>MAXIMO DIAS</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td>Linha: {{ loop.index }}</td>
+                <td>{{ cliente.referencia }}</td>
+                <td>{{ cliente.descricao }}</td>
+                <td>{{ cliente.periodicidade }}</td>
+
+                <td>{{ cliente.numperiodos }}</td>
+                <td>{% if cliente.ignorarconsumozero %} SIM {% else %} NÃO {% endif %}</td>
+                <td>{{ cliente.intervaloestoquemindias }}</td>
+                <td>{{ cliente.intervaloestoquemaxdias }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

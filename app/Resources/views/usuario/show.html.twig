@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Usuario</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover table-striped table-condensed myTable">
+                            <tbody>
+                            <tr>
+                                <th>Login</th>
+                                <td>{{ usuario.login }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nome</th>
+                                <td>{{ usuario.nome }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ usuario.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ativo</th>
+                                <td>{% if usuario.isativo %}SIM{% else %}NÃO{% endif %}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <a href="{{ path('usuario_unique_roles',{ 'usuario': usuario.id }) }}" class="btn btn-primary btn-xs backup"
+                           data-toggle="modal" data-target=".bs-uniqueroles">
+                            <span class="glyphicon glyphicon-search"></span>
+                            Permissoes Unificadas
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="modal fade bs-uniqueroles" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel2">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+
+                        <div class="uniqueroles">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#permissoes" aria-expanded="false" aria-controls="permissoes">
+                            Permissões diretas ao Usuário
+                        </a>
+                    </h4>
+                </div>
+                <div id="permissoes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="permissoes">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="panel panel-default">
+
+                                    <div class="panel-body">
+
+
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-condensed" id="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>Descricao</th>
+                                                    <th>Ajuda</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                {% for obj in permissoes_usuario %}
+                                                    {% for permisso in obj %}
+                                                        <tr>
+                                                            <td><a href="{{ path('permissoes_show', { 'id': permisso.id }) }}">{{ permisso.nome }}</a></td>
+                                                            <td>{{ permisso.descricao }}</td>
+                                                            <td>{{ permisso.ajuda }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Grupos do Usuários</h3>
+                </div>
+                <div class="panel-body">
+
+                    {% for grupo in grupos %}
+
+                        {%  for item in grupo %}
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <span class="text-info">
+                                Grupo: {{ item.nome }}
+                            <a href="{{ path('grupousuarios_show',{ 'id' : item.id }) }}">
+                                 Analisar este Grupo
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                            </a>
+                        </span>
+                            {{ render(controller('PortalBundle:PermissoesGrupo:index', { 'grupo': item.id })) }}
+                        {% endfor %}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('usuario_index') }}">Listar todos os usuários</a>
+        </li>
+    </ul>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{ asset('bundles/portal/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/portal/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/portal/js/jquery.dataTables.min.js') }}"></script>
+
+    <script>
+        $('#table').dataTable();
+        $('.myTableOther').dataTable();
+    </script>
+
+{% endblock %}

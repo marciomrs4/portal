@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}PortalBundle:Cliente:listParameters{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Ostomia:Lista Estoque|Quota page</h1>
+
+    <table border="2">
+        <thead>
+        <tr>
+            <td>Linha(s)</td>
+            <td>Referência</td>
+            <td>Quota</td>
+            <td>Estoque</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for quota in quotas %}
+            <tr>
+                <td>Linha: {{ loop.index }}</td>
+                <td>{{ quota.referencia }}</td>
+                <td>{{ quota.quota }}</td>
+                <td>{{ quota.estoque }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

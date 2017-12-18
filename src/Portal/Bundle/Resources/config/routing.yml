@@ -1,0 +1,15 @@
+portal_homepage:
+    path:     /
+    defaults: { _controller: PortalBundle:Default:index }
+portal_horario_corte:
+    path:     /horarios
+    defaults: { _controller: PortalBundle:Default:horarioCorte }
+
+portal_horario_corte_json:
+    path:     /horarios/json
+    defaults: { _controller: PortalBundle:Default:horarioCorteJson }
+    requirements: [GET]
+
+clientes:
+    resource: "@PortalBundle/Controller/"
+    type: annotation

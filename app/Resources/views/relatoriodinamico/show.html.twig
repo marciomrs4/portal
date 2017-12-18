@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Relatorio</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered table-hover table-striped table-condensed">
+                            <tbody>
+                            <tr>
+                                <th>Nome</th>
+                                <td>{{ relatorioDinamico.nome }}</td>
+                            </tr>
+                            <tr>
+                                <th>Grupo</th>
+                                <td>{{ relatorioDinamico.grupo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Permissao</th>
+                                <td>{{ relatorioDinamico.permissao }}</td>
+                            </tr>
+                            <tr>
+                                <th>Interno</th>
+                                <td>{% if relatorioDinamico.interno %}SIM{% else %}NÃO{% endif %}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            {% if permissao %}
+                {{ render(controller('PortalBundle:Permissoes:show',{ 'id': permissao.0.id })) }}
+
+            {% else %}
+                <h3 class="text-info">Não há permissão para este relatório</h3>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ path('relatoriodinamico_index') }}" class="btn btn-primary">
+                Listar Relatorios Dinamicos
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {#
+    <script src="{{ asset('bundles/portal/js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/portal/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/portal/js/jquery.dataTables.min.js') }}"></script>
+
+    <script>
+        $('.myTable').dataTable();
+    </script>
+    #}
+{% endblock %}
