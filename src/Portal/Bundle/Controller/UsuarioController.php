@@ -196,5 +196,21 @@ class UsuarioController extends Controller
         ));
     }
 
+    /**
+     * @Route("/clientes/{usuario}", name="clientes_from_usuarios")
+     * @Method("GET")
+     */
+    public function getAllClientsFromUsersAction(Usuario $usuario)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $clientes = $em->getRepository('PortalBundle:Usuario')
+                       ->getAllClients($usuario->getId());
+
+        return $this->render(':usuario:clientes.html.twig', array(
+            'clientes' => $clientes,
+        ));
+
+    }
 
 }

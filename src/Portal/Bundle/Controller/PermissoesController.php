@@ -24,7 +24,9 @@ class PermissoesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $permissoes = $em->getRepository('PortalBundle:Permissoes')->findAll();
+        $permissoes = $em->getRepository('PortalBundle:Permissoes')->getAllPermissoes();
+
+        //dump($permissoes); exit();
 
         return $this->render('PortalBundle:Permissoes:index.html.twig', array(
             'permissoes' => $permissoes,

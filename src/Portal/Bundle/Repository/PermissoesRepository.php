@@ -15,15 +15,11 @@ class PermissoesRepository extends EntityRepository
 
     private function getQuery()
     {
-        return "select 	referencia,
-                        descricao,
-                        periodicidade,
-                        numperiodos,
-                        ignorarconsumozero,
-                        intervaloestoquemindias,
-                        intervaloestoquemaxdias
-                from cead_cliente
-                where periodicidade is not null";
+        return 'SELECT p.id, g.descricao AS "grupo", p.nome, p.descricao, p.ajuda
+                    FROM user_papel AS p
+                    INNER JOIN user_grupopapel AS g
+                    ON p.grupopapelid = g.id
+                    ORDER BY g.descricao, p.nome;';
     }
 
     public function getAllPermissoes()

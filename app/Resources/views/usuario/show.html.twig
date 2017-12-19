@@ -30,6 +30,13 @@
                                 <th>Ativo</th>
                                 <td>{% if usuario.isativo %}SIM{% else %}NÃO{% endif %}</td>
                             </tr>
+
+                            <tr>
+                                <th>Cliente(s)</th>
+                                <td>
+                                {{ render(controller('PortalBundle:Usuario:getAllClientsFromUsers',{ 'usuario': usuario.id })) }}
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
 

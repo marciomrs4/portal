@@ -1,0 +1,3 @@
+{% for cliente in clientes %}
+   {{ cliente.referencia }}{% if not loop.last %},{% endif %}
+{% endfor %}
