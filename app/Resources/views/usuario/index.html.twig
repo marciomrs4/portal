@@ -23,6 +23,7 @@
                                 <th>Nome</th>
                                 <th>Email</th>
                                 <th>Login</th>
+                                <th>Cliente(s)</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,7 +39,9 @@
                                     <td>{{ usuario.nome }}</td>
                                     <td>{{ usuario.email }}</td>
                                     <td>{{ usuario.login }}</td>
-                                </tr>
+                                    <td>
+                                        {{ render(controller('PortalBundle:Usuario:getAllClientsFromUsers',{ 'usuario': usuario.id })) }}
+                                    </td>
                             {% endfor %}
                             </tbody>
                         </table>
